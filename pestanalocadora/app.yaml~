@@ -1,0 +1,23 @@
+application: pestanalocadora
+version:  1
+runtime:  python
+api_version:  1
+threadsafe:  true
+
+   
+handlers:
+- url: /js
+  static_dir: js
+- url: /style
+  static_dir: style
+- url: /img
+  static_dir: img
+- url: /font-awesome
+  static_dir: font-awesome
+
+- error_code: 404
+    file: over_quota.html
+
+
+- url: /.*
+  script: controller.py
