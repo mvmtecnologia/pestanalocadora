@@ -15,7 +15,9 @@ class ServicoHandler(RequestHandler):
     def get(self):
         self.response.out.write(template.render('pages/servico.html', {}))
 
-
+class VeiculoHandler(RequestHandler):
+    def get(self):
+        self.response.out.write(template.render('pages/veiculo.html', {}))
 
 class ContatoHandler(RequestHandler):
     emailHelper=None
@@ -47,7 +49,7 @@ class ContatoHandler(RequestHandler):
 
 application = webapp.WSGIApplication(
                                      [('/', HomeHandler),('/contato', ContatoHandler),
-                                        ('/servico', ServicoHandler),
+                                        ('/servico', ServicoHandler), ('/veiculo', VeiculoHandler),
                                        
                                     ],
                                      debug=True)
