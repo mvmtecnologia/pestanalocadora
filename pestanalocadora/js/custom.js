@@ -1,12 +1,11 @@
 jQuery(function($){
 	
 	
-	if (location.href == "http://localhost:8080/") {
+	if (location.href == "http://pestanalocadora.appspot.com/") {
 		$('footer').addClass('footer-home');
-	}else if(location.href == "http://localhost:8080/servico"){
+	}else if(location.href == "http://pestanalocadora.appspot.com/servico"){
 		$('footer').addClass('footer-service');
 	}
-	
 	
 	
    $(".tweet").tweet({
