@@ -1,9 +1,14 @@
-
-/* Twitter */
-
-/* Twitter #1 */
-
 jQuery(function($){
+	
+	
+	if (location.href == "http://localhost:8080/") {
+		$('footer').addClass('footer-home');
+	}else if(location.href == "http://localhost:8080/servico"){
+		$('footer').addClass('footer-service');
+	}
+	
+	
+	
    $(".tweet").tweet({
       username: "ashokramesh90",
       join_text: "auto",
