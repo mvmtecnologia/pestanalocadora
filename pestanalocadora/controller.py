@@ -7,50 +7,88 @@ import datetime
 
 
 class HomeHandler(RequestHandler):
+    '''
+    Classe que representa as requisicoes para a pagina de home do sistema.
+    '''
+
     def get(self):
-        self.response.set_status(500)
         self.response.out.write(template.render('pages/home.html', {}))
+        
+        
+        
+        
  
 class ServicoHandler(RequestHandler):
+    '''
+    Classe que representa as requisicoes para a pagina de servico do sistema.
+    '''
+    
     def get(self):
         self.response.out.write(template.render('pages/servico.html', {}))
+        
+        
+        
+
 
 class VeiculoHandler(RequestHandler):
+    '''
+    Classe que representa as requisicoes para a pagina de veiculos do sistema.
+    '''
+    
     def get(self):
         self.response.out.write(template.render('pages/veiculo.html', {}))
+        
+        
+        
+        
 
 class ContatoHandler(RequestHandler):
-    emailHelper=None
-          
+    '''
+    Classe que representa o formulario de contato do sitema.
+    '''
+    
     def get(self):
         self.response.out.write(template.render('pages/contato.html', {}))
 
+    def post(self):
+        if self.request.get('email'):
+           self.email = self.request.get('email');
+                
+        contato = Contato(nome=self.request.get('name'),
+                              email=self.email,
+                              mensagem=self.request.get('comment'),
+                              dataContato=datetime.datetime.now().date())
+        if contato.isValid():
+           contato.put() 
+        return  self.redirect('/')
+
+
+
+
+
+class AdministradorHandler(RequestHandler):
+    '''
+    Classe que representa o administrador do sistema.
+    '''
+          
+    def get(self):
+        self.response.out.write(template.render('pages/entrada-admin.html', {}))
+
 
     def post(self):
-            if self.request.get('email'):
-                self.emailHelper = self.request.get('email');
-                
-            contato = Contato(nome=self.request.get('name'),
-                              email=self.emailHelper,
-                              mensagem=self.request.get('input-message'), 
-                              dataContato=datetime.datetime.now().date())
-            print contato
-            
-#            if contato.isValid():
-#                contato.put() 
-#                contato.enviarEmail()
-        
-#                return  self.redirect('/')
-#            else:
-                #TODO:melhorar isso.
-            return  self.redirect('/')
-            
+        return  self.response.out.write(template.render('pages/painel-aplicacao.html', {}))
+
+
+
+
 
 
 application = webapp.WSGIApplication(
-                                     [('/', HomeHandler),('/contato', ContatoHandler),
+                                     [('/', HomeHandler), ('/contato', ContatoHandler),
                                         ('/servico', ServicoHandler), ('/veiculo', VeiculoHandler),
-                                       
+                                        ('/pestanaadmin', AdministradorHandler),
+                                      ('/login', AdministradorHandler),
+
                                     ],
                                      debug=True)
 def main():

@@ -1,0 +1,57 @@
+<!-- import template -->
+{% extends 'template.html' %} {% block conteudo%}
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="span6" style="margin-left: -250;">
+				<div class="about" >
+			
+					<div>
+					
+							<div class="hero">
+								<h3>
+									<span>Contatos</span>
+								</h3>
+				 			</div>
+							
+						<table class="table" style="width: 500px;">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Nome:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td><a href="#nome">@twitter</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<br /> <br />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Informações sobre o contato</h3>
+		</div>
+		<div class="modal-body">
+			<div>Nome:</div>
+			<div>Telefone:</div>
+			<div>
+				Mensagem:
+				<textarea rows="" cols=""></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

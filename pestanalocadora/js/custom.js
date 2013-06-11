@@ -7,6 +7,10 @@ jQuery(function($){
 		$('footer').addClass('footer-service');
 	}
 	
+	$('a[href="#nome"]').on('click',function(e){  
+		e.preventDefault();
+		$('#myModal').modal({show:true})
+	});
 	
    $(".tweet").tweet({
       username: "ashokramesh90",

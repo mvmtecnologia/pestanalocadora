@@ -21,20 +21,7 @@ class Contato(db.Model):
     mensagem = db.TextProperty()
     dataContato = db.DateProperty()
 
-    
     def isValid(self):
         if self.nome and self.email and self.mensagem and self.dataContato:
             return True
         else: False
-     
-    
-    def enviarEmail(self):
-            logging.info('enviando email..')
-            mail.send_mail(sender="contato@mvmtecnologia.com.br",
-            to=self.email,
-            subject="Contato MVMTecnologia",
-            body='''Muito obrigado por entrar em contato conosco, em breve estaremos retornando.''')    
-            
-            
-            
-            
