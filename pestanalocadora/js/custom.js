@@ -1,5 +1,8 @@
 jQuery(function($){
 	
+	$('#link_sair').click(function(){
+	$(this).remove()
+	});
 	
 	if (location.href == "http://pestanalocadora.appspot.com/") {
 		$('footer').addClass('footer-home');

@@ -4,28 +4,31 @@
 	<div class="container">
 		<div class="row">
 			<div class="span6" style="margin-left: -250;">
-				<div class="about" >
-			
+				<div class="about">
 					<div>
-					
-							<div class="hero">
-								<h3>
-									<span>Contatos</span>
-								</h3>
-				 			</div>
-							
+						<div class="hero">
+							<h3>
+								<span>Contatos</span>
+							</h3>
+						</div>
 						<table class="table" style="width: 500px;">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Nome:</th>
+ 									<th>Nome:</th>
 								</tr>
 							</thead>
 							<tbody>
+								{% for contato in contatos%}
 								<tr>
-									<td>1</td>
-									<td><a href="#nome">@twitter</a></td>
+ 									<td id="{{contato.key}}"><a href="#nome">{{contato.nome}}</a>
+ 									<input type="hidden" value="{{contato.nome}}"  id="nome">
+ 									<input type="hidden" value="{{contato.key}}"  id="key">
+ 									<input type="hidden" value="{{contato.email}}"  id="email">
+ 									<input type="hidden" value="{{contato.mensagem}}"  id="mensagem">
+ 									<input type="hidden" value="{{contato.dataContato}}"  id="dataContato">
+ 									</td>
 								</tr>
+								{% endfor %}
 							</tbody>
 						</table>
 					</div>
@@ -45,12 +48,13 @@
 			<h3 id="myModalLabel">Informações sobre o contato</h3>
 		</div>
 		<div class="modal-body">
-			<div>Nome:</div>
-			<div>Telefone:</div>
-			<div>
+			<div id="modal-nome" style="margin-bottom: 20px;">Nome:</div>
+			<div id="modal-email" style="margin-bottom: 20px;" >Telefone:</div>
+			<div id="modal-mensagem" style="margin-bottom: 20px;">
 				Mensagem:
 				<textarea rows="" cols=""></textarea>
 			</div>
+			<div id="modal-data-contato"  style="margin-bottom: 20px;">Data Contato:</div>
 		</div>
 	</div>
 </div>

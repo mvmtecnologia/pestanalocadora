@@ -2,6 +2,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp import RequestHandler
 from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.api import users
 from model import Contato
 import datetime
 
@@ -52,14 +53,14 @@ class ContatoHandler(RequestHandler):
 
     def post(self):
         if self.request.get('email'):
-           self.email = self.request.get('email');
+            self.email = self.request.get('email');
                 
         contato = Contato(nome=self.request.get('name'),
                               email=self.email,
                               mensagem=self.request.get('comment'),
                               dataContato=datetime.datetime.now().date())
         if contato.isValid():
-           contato.put() 
+            contato.put() 
         return  self.redirect('/')
 
 
@@ -72,12 +73,22 @@ class AdministradorHandler(RequestHandler):
     '''
           
     def get(self):
-        self.response.out.write(template.render('pages/entrada-admin.html', {}))
+        user = users.get_current_user()
+        admin = users.is_current_user_admin()
+        if user and admin:
+            
+            dados_saida = {'contatos':Contato.all(),
+                            'link_sair':users.create_logout_url('/'),
+                            'texto_sair':'sair',
+                            'nome':user.nickname()}
+            return self.response.out.write(template.render('pages/painel-aplicacao.html',dados_saida))
 
+        else:
+            return self.response.out.write(template.render('pages/entrada-admin.html',{'entrar':users.create_login_url('/pestanaadmin')}))
 
+     
     def post(self):
-        return  self.response.out.write(template.render('pages/painel-aplicacao.html', {}))
-
+        pass
 
 
 
