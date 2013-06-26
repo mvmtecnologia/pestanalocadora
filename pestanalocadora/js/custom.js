@@ -1,5 +1,7 @@
 jQuery(function($){
 	
+	$('.msg').popover({trigger:'hover'});
+	
 	$('#link_sair').click(function(){
 	$(this).remove()
 	});
@@ -15,38 +17,7 @@ jQuery(function($){
 		$('#myModal').modal({show:true})
 	});
 	
-   $(".tweet").tweet({
-      username: "ashokramesh90",
-      join_text: "auto",
-      avatar_size: 0,
-      count: 3,
-      auto_join_text_default: "we said,",
-      auto_join_text_ed: "we",
-      auto_join_text_ing: "we were",
-      auto_join_text_reply: "we replied to",
-      auto_join_text_url: "we were checking out",
-      loading_text: "loading tweets...",
-      template: "{text}"
-   });
-}); 
-
-/* Twitter #2 */
-
-jQuery(function($){
-   $(".ctweet").tweet({
-      username: "ashokramesh90",
-      join_text: "auto",
-      avatar_size: 0,
-      count: 1,
-      auto_join_text_default: "we said,",
-      auto_join_text_ed: "we",
-      auto_join_text_ing: "we were",
-      auto_join_text_reply: "we replied to",
-      auto_join_text_url: "we were checking out",
-      loading_text: "loading tweets...",
-      template: "{text}"
-   });
-}); 
+ 
 
 /* Support list */
 
@@ -67,4 +38,5 @@ $('#filters a').click(function(){
 
 jQuery("a[class^='prettyPhoto']").prettyPhoto({
 overlay_gallery: false, social_tools: false
+});
 });

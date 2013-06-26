@@ -15,19 +15,26 @@
 							<thead>
 								<tr>
  									<th>Nome:</th>
+ 									<th>Email:</th>
+ 									<th>Data Contato:</th>
+ 									<th>Mensagem:</th>
+ 									
 								</tr>
 							</thead>
 							<tbody>
 								{% for contato in contatos%}
 								<tr>
- 									<td id="{{contato.key}}"><a href="#nome">{{contato.nome}}</a>
- 									<input type="hidden" value="{{contato.nome}}"  id="nome">
- 									<input type="hidden" value="{{contato.key}}"  id="key">
- 									<input type="hidden" value="{{contato.email}}"  id="email">
- 									<input type="hidden" value="{{contato.mensagem}}"  id="mensagem">
- 									<input type="hidden" value="{{contato.dataContato}}"  id="dataContato">
- 									</td>
-								</tr>
+ 									<td>{{contato.nome}}</td>
+ 									<td>{{contato.email}}</td>
+ 									<td>{{contato.dataContato}}</td>
+ 									<td >
+ 									 <a href="#"
+ 									    class="msg"  
+ 									    rel="popover" 
+ 									    data-content="{{contato.mensagem}}" 
+ 									    data-original-title="Mensagem Enviada">Exibir Mensagem</a>  
+ 									 </td>
+ 								</tr>
 								{% endfor %}
 							</tbody>
 						</table>
@@ -40,7 +47,8 @@
 		</div>
 	</div>
 
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
+<!--	
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"
@@ -57,5 +65,6 @@
 			<div id="modal-data-contato"  style="margin-bottom: 20px;">Data Contato:</div>
 		</div>
 	</div>
+-->
 </div>
 {%endblock%}

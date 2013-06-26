@@ -84,7 +84,7 @@ class AdministradorHandler(RequestHandler):
             return self.response.out.write(template.render('pages/painel-aplicacao.html',dados_saida))
 
         else:
-            return self.response.out.write(template.render('pages/entrada-admin.html',{'entrar':users.create_login_url('/pestanaadmin')}))
+            return self.redirect(users.create_login_url('/pestanaadmin'))
 
      
     def post(self):
